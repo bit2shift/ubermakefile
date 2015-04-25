@@ -1,0 +1,67 @@
+# Le makefile
+SHELL := /bin/bash
+
+# Check if pkg-config is installed.
+ifeq '' '$(shell pkg-config --version 2>/dev/null)'
+$(error error: pkg-config is missing)
+endif
+
+# Detect if CXX is clang++ or g++.
+ifneq '' '$(findstring clang++,$(CXX))'
+CXXFLAGS = -stdlib=libc++
+LDLIBS   = -lc++
+else ifneq '' '$(findstring g++,$(CXX))'
+LDLIBS   = -lstdc++
+endif
+
+# Build flags
+CXXFLAGS += -std=c++17 -pedantic -Wall -Wconversion -Werror -Wextra -fPIC -fvisibility=hidden -msse2 -mstackrealign
+CPPFLAGS += -MMD -MP -I$(CURDIR)/dep/glfw/deps -I$(CURDIR)/inc -DGLFW_INCLUDE_VULKAN -DR3V_EXPORT
+
+.PHONY: all build clean cleanall compile debug depbuild release
+
+all: depbuild debug
+
+# Piecewise makefiles that append to PKG_CONFIG_PATH
+include dep/*.mk
+pkg-config := PKG_CONFIG_PATH=$(shell sed 's/ /:/g' <<< '$(PKG_CONFIG_PATH)') pkg-config $(shell basename -s.mk dep/*.mk)
+
+cleanall: clean
+	@git submodule foreach 'git clean -dffqx; git reset --hard'
+	@$(RM) -r bin
+
+clean:
+	@echo 'Cleaning...'
+	@$(RM) -r obj
+
+debug: export CXXFLAGS += -O0 -g3
+debug: build
+
+release: export CXXFLAGS += -O3
+release: build
+
+build: export CPPFLAGS += $(shell $(pkg-config) --static --cflags)
+build: export LDFLAGS  += $(shell $(pkg-config) --static --libs-only-L --libs-only-other)
+build: export LDLIBS   += $(shell $(pkg-config) --static --libs-only-l)
+
+build: SRC != find src -name '*.cpp' -printf '%P '
+build: $(shell find src -name '*.mk')
+
+src/%.mk: compile | bin
+	@$(MAKE)\
+		-Cbin\
+		-f'$(CURDIR)/$@'\
+		VPATH='$(CURDIR)/obj'\
+		CC='@echo "Linking [$$@]"; mkdir -p $$(@D); $(CC)'\
+		OBJ='$(SRC:.cpp=.o)'
+
+compile: | obj
+	@$(MAKE)\
+		-Cobj\
+		--eval='-include $(SRC:.cpp=.d)'\
+		VPATH='$(CURDIR)/src'\
+		CXX='@echo "Compiling [$$@]"; mkdir -p $$(@D); $(CXX)'\
+		$(SRC:.cpp=.o)
+
+bin obj:
+	@mkdir $@
