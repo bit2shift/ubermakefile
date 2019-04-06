@@ -13,6 +13,18 @@
     - [`static`](#static)
     - [`build`](#build)
 
-## `flags`
+### `flags`
 
-To do.
+#### `common`
+
+#### `debug`
+
+#### `release`
+
+### `dependencies`
+
+#### _`<package>`_
+
+##### `static`
+
+##### `build`
