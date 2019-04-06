@@ -19,6 +19,7 @@ For general build flags that do not affect debugging or optimisation levels. (e.
 Flags typically used when debugging, i.e. `-O0`, `-Og`, `-g`, `-g<1-3>`, etc.
 #### `release`
 Normally the opposite of debugging, these flags are meant for increased optimisation, i.e. `-O`, `-O<1-3>`, `-Os`, `-g0`, etc.
+
 ---
 ### `dependencies`
 
