@@ -24,7 +24,7 @@ endif
 all: depbuild debug
 
 depbuild:
-	@git submodule foreach 'jq -r ".dependencies.$$name | arrays, strings | @sh" $$toplevel/über.json | xargs -rn1 sh -c'
+	@git submodule foreach 'jq -r ".dependencies.$$name.build | arrays, strings | @sh" $$toplevel/über.json | xargs -rn1 $(SHELL) -c'
 
 cleanall: clean
 	@git submodule foreach 'git clean -dffqx; git reset --hard'
@@ -35,23 +35,24 @@ clean:
 	@$(RM) -r obj
 
 # Common build flags.
-$(eval $(shell jq -r '.flags.common | to_entries | map("$$(eval \(.key)+=\(.value))") | .[]' über.json))
+$(eval $(shell jq -r '.flags.common // {} | to_entries | map("$$(eval \(.key)+=\(.value))") | .[]' über.json))
 
 # Debug build flags.
-$(eval $(shell jq -r '.flags.debug | to_entries | map("$$(eval debug: export \(.key)+=\(.value))") | .[]' über.json))
+$(eval $(shell jq -r '.flags.debug // {} | to_entries | map("$$(eval debug: export \(.key)+=\(.value))") | .[]' über.json))
 debug: build
 
 # Release build flags.
-$(eval $(shell jq -r '.flags.release | to_entries | map("$$(eval release: export \(.key)+=\(.value))") | .[]' über.json))
+$(eval $(shell jq -r '.flags.release // {} | to_entries | map("$$(eval release: export \(.key)+=\(.value))") | .[]' über.json))
 release: build
 
 # Precompiled pkg-config invocation.
-pkg-config = $(eval pkg-config := PKG_CONFIG_PATH+=$(shell find $(CURDIR) -name '*.pc' -printf ':%h') pkg-config $(shell jq -r '.dependencies | to_entries | map(.key) | @sh' über.json))$(pkg-config)
+pc-path = $(eval pc-path := $(shell find $(CURDIR) -name '*.pc' -printf ':%h'))$(pc-path)
+pkg-config = $(shell PKG_CONFIG_PATH+='$(pc-path)' $(SHELL) -c $(shell jq -r '.dependencies // {} | to_entries | map([(select(.value.static) | "--static"), .key]) | map("pkg-config $(1) \(join(" "));") | join(" ") | @sh' über.json))
 
 # Dependency flags.
-build: export CPPFLAGS += $(shell $(pkg-config) --static --cflags)
-build: export LDFLAGS  += $(shell $(pkg-config) --static --libs-only-L --libs-only-other)
-build: export LDLIBS   += $(shell $(pkg-config) --static --libs-only-l)
+build: export CPPFLAGS += $(call pkg-config,--cflags)
+build: export LDFLAGS  += $(call pkg-config,--libs-only-L --libs-only-other)
+build: export LDLIBS   += $(call pkg-config,--libs-only-l)
 
 # Le build.
 build: export CPPFLAGS += -MMD -MP
