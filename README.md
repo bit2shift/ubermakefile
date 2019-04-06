@@ -13,13 +13,12 @@
 ---
 ### `flags`
 Contains the build flags, i.e. `CXXFLAGS`, `CPPFLAGS`, `LDFLAGS`, `LDLIBS`, etc.
-
 #### `common`
-
+For general build flags that do not affect debugging or optimisation levels. (e.g. `-std=c++17`, `-pedantic`, `-Wall`, etc.)
 #### `debug`
 
 #### `release`
-
+---
 ### `dependencies`
 
 #### _`<package>`_
