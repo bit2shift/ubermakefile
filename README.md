@@ -10,6 +10,7 @@
   - [_`<package>`_](#package)
     - [`static`](#static)
     - [`build`](#build)
+
 ---
 ### `flags`
 Contains the build flags, i.e. `CXXFLAGS`, `CPPFLAGS`, `LDFLAGS`, `LDLIBS`, etc.
