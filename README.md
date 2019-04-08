@@ -1,6 +1,16 @@
 # über.mk
 Übermakefile for those who are not very fond of CMake.
 
+## 5 steps quick start
+- Plop your code into a `src` folder
+- Specify the build (compile and link) flags alongside with standard dependencies in `über.json`
+- Define the build targets as `.mk` files in the same folder and with the same name as their main translation units (`main.cpp -> main.mk`)
+- Either rename `über.mk` to `makefile` or have one that redirects all unmatched targets into `über.mk`
+- `make`
+
+## Optional step
+- Add any source-built dependencies as `git` submodules and declare them with build instructions in `über.json`
+
 ## Layout of `über.json`
 - [`flags`](#flags)
   - [`common`](#common)
