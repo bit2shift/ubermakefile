@@ -17,6 +17,10 @@
   - [`common`](#common)
   - [`debug`](#debug)
   - [`release`](#release)
+- [`targets`](#targets)
+  - [_`<target-name>`_](#target-name)
+    - [`flags`](#flags)
+    - [`objects`](#objects)
 - [`dependencies`](#dependencies)
   - [_`<package>`_](#package)
     - [`static`](#static)
@@ -36,6 +40,15 @@ Flags typically used when debugging, i.e. `-O0`, `-Og`, `-g`, `-g<1-3>`, etc.
 
 #### `release`
 Normally the opposite of debugging, these flags are meant for increased optimisation, i.e. `-O`, `-O<1-3>`, `-Os`, `-g0`, etc.
+
+---
+### `targets`
+
+#### _`<target-name>`_
+
+##### `flags`
+
+##### `objects`
 
 ---
 ### `dependencies`
