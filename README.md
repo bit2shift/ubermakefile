@@ -6,7 +6,7 @@
 - Specify the build (compile and link) flags alongside with standard dependencies in `über.json`
 - Define the build targets with their even-so-more-specific flags and objects in `über.json`
 - Either rename `über.mk` to `makefile` or have one that redirects all unmatched targets into `über.mk`
-- `make`
+- `make`/`make all` or `make devall`, for building in release or debug mode, respectively
 
 ### Optional step
 - Add any source-built dependencies as `git` submodules and declare them with build instructions in `über.json`
