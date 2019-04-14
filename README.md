@@ -19,7 +19,7 @@
   - [`release`](#release)
 - [`targets`](#targets)
   - [_`<target-name>`_](#target-name)
-    - [`flags`](#flags)
+    - [`flags`](#flags-1)
     - [`objects`](#objects)
 - [`dependencies`](#dependencies)
   - [_`<package>`_](#package)
