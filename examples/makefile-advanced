@@ -1,7 +1,8 @@
 .PHONY: do_something
 
+# May also be `uber.mk/makefile` in case you cloned the repository without specifying `über.mk` as destination folder.
 .DEFAULT:
-	@$(MAKE) -füber.mk $@
+	@$(MAKE) -füber.mk/makefile $@
 
 do_something:
 	@echo 'doing something'
