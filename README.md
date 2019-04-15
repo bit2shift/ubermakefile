@@ -5,7 +5,7 @@
 - Plop your code into a `src` folder
 - Specify the build (compile and link) flags alongside with standard dependencies in `über.json`
 - Define the build targets with their even-so-more-specific flags and objects in `über.json`
-- Either rename `über.mk` to `makefile` or have one that redirects all unmatched targets into `über.mk`
+- Either copy/symlink `über.mk/makefile` into your project or have a _shim_ `makefile` that redirects all unmatched targets into `über.mk/makefile`
 - `make`/`make all` or `make devall`, for building in release or debug mode, respectively
 
 ### Optional step
