@@ -1,7 +1,3 @@
-# Example (simple)
-include über.mk
-
-# Example (advanced)
 .PHONY: do_something
 
 .DEFAULT:
