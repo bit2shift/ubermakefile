@@ -1,9 +1,9 @@
 # über.mk
-Übermakefile for those who are not very fond of CMake.
+Übermakefile for those who are not very fond of CMake. For C++ code bases.
 
 ## 5 steps quick start
 - Plop your code into a `src` folder
-- Specify the build (compile and link) flags alongside with standard dependencies in `über.json`
+- Specify the build (compile and link) flags alongside with _normal_ dependencies in `über.json`
 - Define the build targets with their even-so-more-specific flags and objects in `über.json`
 - Either copy/symlink `über.mk/makefile` into your project or have a _shim_ `makefile` that either redirects all unmatched targets into `über.mk/makefile` or includes it
 - `make`/`make all` or `make devall`, for building in release or debug mode, respectively
