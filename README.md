@@ -17,10 +17,10 @@
   - [`common`](#common)
   - [`debug`](#debug)
   - [`release`](#release)
-- [`targets`](#targets)
-  - [_`<target-name>`_](#target-name)
+- [`targets`](#targets) _(mandatory)_
+  - [_`<target-name>`_](#target-name) _(mandatory)_
     - [`flags`](#flags-1)
-    - [`objects`](#objects)
+    - [`objects`](#objects) _(mandatory)_
 - [`dependencies`](#dependencies)
   - [_`<package>`_](#package)
     - [`static`](#static)
