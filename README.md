@@ -55,7 +55,7 @@ Flags that are specific to the underlying type of artifact being built. These sh
 ##### `objects`
 A string or an array of strings, each containing a pattern that can be passed to [`$(filter pattern…,text)`](https://www.gnu.org/software/make/manual/html_node/Text-Functions.html#Text-Functions) in `make`.  
 Used for selecting the objects required for building the current artifact.  
-TL; DR: It's a list of wildcard paths, with the wildcard character being `%`.
+TL;DR: It's a list of wildcard paths, with the wildcard character being `%`.
 
 ---
 ### `dependencies`
