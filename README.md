@@ -53,8 +53,8 @@ A single build artifact. Its name is used by `make` as target for a recipe.
 Flags that are specific to the underlying type of artifact being built. These should not affect debugging or optimisation characteristics.
 
 ##### `objects`
-A single string or an array of strings, each containing a pattern that can be passed to [`$(filter pattern…,text)`](https://www.gnu.org/software/make/manual/html_node/Text-Functions.html#Text-Functions) in `make`.  
-Used to select the objects that are needed to build the current artifact.  
+A string or an array of strings, each containing a pattern that can be passed to [`$(filter pattern…,text)`](https://www.gnu.org/software/make/manual/html_node/Text-Functions.html#Text-Functions) in `make`.  
+Used for selecting the objects required for building the current artifact.  
 TL; DR: It's a list of wildcard paths, with the wildcard character being `%`.
 
 ---
