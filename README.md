@@ -43,12 +43,18 @@ Normally the opposite of debugging, these flags are meant for increased optimisa
 
 ---
 ### `targets`
+Build artifacts are declared in this section. There can be many, including test rigs.  
+Each key in this dictionary is the path of a single build artifact, as if located inside the `src` folder.
 
 #### _`<target-name>`_
+A single build artifact. Its name is used by `make` as target for a recipe.
 
 ##### `flags`
+Flags that are specific to the underlying type of artifact being built. These should not affect debugging or optimisation characteristics.
 
 ##### `objects`
+A single string or an array of strings, each containing a pattern that can be passed to `$(filter )` in `make`.  
+Used to select the objects that are needed to build the current artifact.
 
 ---
 ### `dependencies`
