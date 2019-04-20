@@ -64,10 +64,11 @@ TL;DR: It's a list of wildcard paths, with the wildcard character being `%`.
 
 ---
 ### `dependencies`
-Build dependencies are declared here, both normal and _source-built_.  
+Build dependencies—normal and _source-built_—are declared here.  
 Each key in this dictionary is a package that can be queried with `pkg-config`.
 
 #### _`<package>`_
+A single dependency. Used in invocations of `pkg-config <package> [--static] <--cflags ¦ --libs-only-L --libs-only-other ¦ --libs-only-l>`.
 
 ##### `static`
 
