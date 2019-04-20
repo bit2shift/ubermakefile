@@ -64,7 +64,8 @@ TL;DR: It's a list of wildcard paths, with the wildcard character being `%`.
 
 ---
 ### `dependencies`
-Build dependencies are declared here, both normal and _source-built_.
+Build dependencies are declared here, both normal and _source-built_.  
+Each key in this dictionary is a package that can be queried with `pkg-config`.
 
 #### _`<package>`_
 
