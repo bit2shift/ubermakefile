@@ -64,6 +64,7 @@ TL;DR: It's a list of wildcard paths, with the wildcard character being `%`.
 
 ---
 ### `dependencies`
+Build dependencies are declared here, both normal and _source-built_.
 
 #### _`<package>`_
 
