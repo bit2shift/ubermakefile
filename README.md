@@ -34,7 +34,8 @@ They are passed directly into `make` and, as such, are subject to expansion. Tha
 It also means you can do all sorts of `make` shenanigans that are valid inside variable assignments.
 
 #### `common`
-For general build flags that do not affect debugging or optimisation levels. (e.g. `-std=c++17`, `-pedantic`, `-Wall`, `-I...`, etc.)
+For general build flags that do not affect debugging or optimisation levels.  
+Examples: `-std=c++17`, `-pedantic`, `-Wall`, `-I...`
 
 #### `debug`
 Flags typically used when debugging, i.e. `-O0`, `-Og`, `-g`, `-g<1-3>`, etc.
@@ -55,7 +56,8 @@ A boolean value. Specifies if the current artifact is a static library.
 Defaults to `false` if absent.
 
 ##### `flags`
-Flags that are specific to the underlying type of artifact being built. These should not affect debugging or optimisation characteristics.
+Flags that are specific to the underlying type of artifact being built.  
+These should not affect debugging or optimisation characteristics.
 
 ##### `objects`
 A string or an array of strings, each containing a pattern that can be passed to [`$(filter pattern…,text)`](https://www.gnu.org/software/make/manual/html_node/Text-Functions.html#Text-Functions) in `make`.  
