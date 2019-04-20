@@ -79,3 +79,5 @@ A boolean value. Toggles the `--static` option of `pkg-config`.
 Basically, it toggles between static and dynamic linking against the `<package>`.
 
 ##### `build`
+Only used for _source-built_ dependencies.  
+A string or an array of strings containing commands to build the package in question.
