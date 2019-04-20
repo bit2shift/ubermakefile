@@ -19,11 +19,12 @@
   - [`release`](#release)
 - [`targets`](#targets) _(mandatory)_
   - [_`<target-name>`_](#target-name) _(mandatory)_
+    - [`static`](#static)
     - [`flags`](#flags-1)
     - [`objects`](#objects) _(mandatory)_
 - [`dependencies`](#dependencies)
   - [_`<package>`_](#package)
-    - [`static`](#static)
+    - [`static`](#static-1)
     - [`build`](#build)
 
 ---
@@ -48,6 +49,10 @@ Each key in this dictionary is the path of a single build artifact, as if locate
 
 #### _`<target-name>`_
 A single build artifact. Its name is used by `make` as target for a recipe.
+
+##### `static`
+A boolean value. Specifies if the current artifact is a static library.  
+Defaults to `false` if absent.
 
 ##### `flags`
 Flags that are specific to the underlying type of artifact being built. These should not affect debugging or optimisation characteristics.
