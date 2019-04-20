@@ -1,5 +1,6 @@
 # über.mk
-Übermakefile for those who are not very fond of CMake. For C++ code bases.
+Übermakefile for those who are not very fond of CMake. For C++ code bases.  
+<sup><sub>_It can be used with C if you're willing to do some little editing._</sub></sup>
 
 ## 5 steps quick start
 - Plop your code into a `src` folder
