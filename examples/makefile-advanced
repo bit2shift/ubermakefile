@@ -5,5 +5,7 @@
 	@$(MAKE) -füber.mk/makefile $@
 
 # If there are no recipes in "this" makefile, you need to assign a target from `über.mk/makefile` to `.DEFAULT_GOAL`.
+# Example:
+# .DEFAULT_GOAL = devall
 do_something:
 	@echo 'doing something'
