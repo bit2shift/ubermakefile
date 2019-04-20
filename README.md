@@ -71,5 +71,7 @@ Each key in this dictionary is a package that can be queried with `pkg-config`.
 A single dependency. Used in invocations of `pkg-config <package> [--static] <--cflags ¦ --libs-only-L --libs-only-other ¦ --libs-only-l>`.
 
 ##### `static`
+A boolean value. Toggles the `--static` option of `pkg-config`.  
+Basically, it toggles between static and dynamic linking against the `<package>`.
 
 ##### `build`
