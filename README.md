@@ -9,7 +9,7 @@
 - `make`/`make all` or `make devall`, for building in release or debug mode, respectively
 
 ### Optional step
-- Add any source-built dependencies as `git` submodules and declare them with build instructions in `über.json`
+- Add any _source-built_ dependencies as `git` submodules and declare them with build instructions in `über.json`
 
 ---
 ## Layout of `über.json`
@@ -76,8 +76,9 @@ A single dependency. Used in invocations of
 
 ##### `static`
 A boolean value. Toggles the `--static` option of `pkg-config`.  
-Basically, it toggles between static and dynamic linking against the `<package-name>`.
+Basically, it toggles between static and dynamic linking against `<package-name>`.
 
 ##### `build`
 Only used for _source-built_ dependencies.  
-A string or an array of strings containing commands to build the package in question.
+A string or an array of strings containing commands to build `<package-name>`.  
+They are executed, in sequence, inside the corresponding submodule folder using `git submodule foreach`.
