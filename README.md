@@ -18,12 +18,12 @@
   - [`debug`](#debug)
   - [`release`](#release)
 - [`targets`](#targets) _(mandatory)_
-  - [_`<target-name>`_](#target-name) _(mandatory)_
+  - [_`<target-path>`_](#target-path) _(mandatory)_
     - [`static`](#static)
     - [`flags`](#flags-1)
     - [`objects`](#objects) _(mandatory)_
 - [`dependencies`](#dependencies)
-  - [_`<package>`_](#package)
+  - [_`<package-name>`_](#package-name)
     - [`static`](#static-1)
     - [`build`](#build)
 
@@ -48,7 +48,7 @@ Normally the opposite of debugging, these flags are meant for increased optimisa
 Build artifacts are declared in this section. There can be many, including test rigs.  
 Each key in this dictionary is the path of a single build artifact, as if located inside the `src` folder.
 
-#### _`<target-name>`_
+#### _`<target-path>`_
 A single build artifact. Its name is used by `make` as target for a recipe.
 
 ##### `static`
@@ -69,14 +69,14 @@ TL;DR: It's a list of wildcard paths, with the wildcard character being `%`.
 Build dependencies—normal and _source-built_—are declared here.  
 Each key in this dictionary is a package that can be queried with `pkg-config`.
 
-#### _`<package>`_
+#### _`<package-name>`_
 A single dependency. Used in invocations of
 
-    pkg-config <package> [--static] <--cflags ¦ --libs-only-L --libs-only-other ¦ --libs-only-l>
+    pkg-config <package-name> [--static] <--cflags ¦ --libs-only-L --libs-only-other ¦ --libs-only-l>
 
 ##### `static`
 A boolean value. Toggles the `--static` option of `pkg-config`.  
-Basically, it toggles between static and dynamic linking against the `<package>`.
+Basically, it toggles between static and dynamic linking against the `<package-name>`.
 
 ##### `build`
 Only used for _source-built_ dependencies.  
