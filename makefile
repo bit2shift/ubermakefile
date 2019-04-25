@@ -48,7 +48,7 @@ release: build
 
 # Precompiled pkg-config invocation.
 pc-path = $(eval pc-path := $(shell find $(CURDIR) -name '*.pc' -printf ':%h'))$(pc-path)
-pkg-config = $(shell PKG_CONFIG_PATH+='$(pc-path)' $(SHELL) -c $(shell jq -r '.dependencies // {} | to_entries | map("pkg-config $(1) \([(select(.value.static) | "--static"), .key] | join(" "));") | join(" ") | @sh' über.json))
+pkg-config = $(shell PKG_CONFIG_PATH+='$(pc-path)'; $(shell jq -r '.dependencies // {} | to_entries | map("pkg-config $(1) \([(select(.value.static) | "--static"), .key] | join(" "));") | join(" ")' über.json))
 
 # Dependency flags.
 build: export CPPFLAGS += $(call pkg-config,--cflags)
