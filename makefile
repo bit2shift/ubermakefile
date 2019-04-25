@@ -50,10 +50,15 @@ release: build
 pc-path = $(eval pc-path := $(shell find $(CURDIR) -name '*.pc' -printf ':%h'))$(pc-path)
 pkg-config = $(shell PKG_CONFIG_PATH+='$(pc-path)'; $(shell jq -r '.dependencies // {} | to_entries | map("pkg-config $(1) \([(select(.value.static) | "--static"), .key] | join(" "));") | join(" ")' über.json))
 
+# Lazy evaluation.
+PKG_CONFIG_CPPFLAGS = $(eval PKG_CONFIG_CPPFLAGS := $(call pkg-config,--cflags))$(PKG_CONFIG_CPPFLAGS)
+PKG_CONFIG_LDFLAGS  = $(eval PKG_CONFIG_LDFLAGS  := $(call pkg-config,--libs-only-L --libs-only-other))$(PKG_CONFIG_LDFLAGS)
+PKG_CONFIG_LDLIBS   = $(eval PKG_CONFIG_LDLIBS   := $(call pkg-config,--libs-only-l))$(PKG_CONFIG_LDLIBS)
+
 # Dependency flags.
-build: export CPPFLAGS += $(call pkg-config,--cflags)
-build: export LDFLAGS  += $(call pkg-config,--libs-only-L --libs-only-other)
-build: export LDLIBS   += $(call pkg-config,--libs-only-l)
+build: export CPPFLAGS += $(PKG_CONFIG_CPPFLAGS)
+build: export LDFLAGS  += $(PKG_CONFIG_LDFLAGS)
+build: export LDLIBS   += $(PKG_CONFIG_LDLIBS)
 
 # Le build.
 build: export CPPFLAGS += -MMD -MP
