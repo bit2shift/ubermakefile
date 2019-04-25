@@ -2,6 +2,8 @@
 Übermakefile for those who are not very fond of CMake. For C++ code bases.  
 <sup><sub>_It can be used with C if you're willing to do some little editing._</sub></sup>
 
+Relies on common essential tools—`find`, `git`, `make` (obviously) and `pkg-config`—in addition to `jq`—for querying `über.json`.
+
 ## 5 steps quick start
 - Plop your code into a `src` folder
 - Specify the build (compile and link) flags alongside with _normal_ dependencies in `über.json`
