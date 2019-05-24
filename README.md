@@ -8,7 +8,7 @@ Relies on common essential tools—`find`, `git`, `make` (obviously) and `pkg-co
 - Plop your code into a `src` folder
 - Specify the build (compile and link) flags alongside with _normal_ dependencies in `über.json`
 - Define the build targets with their even-so-more-specific flags and objects in `über.json`
-- Either copy/symlink `über.mk/makefile` into your project or have a _shim_ `makefile` that includes or redirects all unmatched targets into it
+- Either symlink `über.mk/makefile` into your project or have a _shim_ `makefile` that includes or redirects all unmatched targets into it
 - `make`/`make all` or `make devall`, for building in release or debug mode, respectively
 
 ### Optional step
