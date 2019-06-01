@@ -1,5 +1,5 @@
 # Obtain the absolute path to über.mk's folder.
-ÜBER.MK := $(dir $(realpath $(lastword $(MAKEFILE_LIST))))
+ÜBER.MK := $(abspath $(realpath $(lastword $(MAKEFILE_LIST)))/..)
 
 # Le makefile.
 SHELL := /bin/bash
