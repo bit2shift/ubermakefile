@@ -1,2 +1,1 @@
-# May also be `uber.mk/makefile` in case you cloned the repository without specifying `über.mk` as destination folder.
-include über.mk/makefile
+include ubermakefile/makefile

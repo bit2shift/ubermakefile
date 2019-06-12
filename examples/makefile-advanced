@@ -1,10 +1,9 @@
 .PHONY: do_something
 
-# May also be `uber.mk/makefile` in case you cloned the repository without specifying `über.mk` as destination folder.
 .DEFAULT:
-	@$(MAKE) -füber.mk/makefile $@
+	@$(MAKE) -fubermakefile/makefile $@
 
-# If there are no recipes in "this" makefile, you need to assign a target from `über.mk/makefile` to `.DEFAULT_GOAL`.
+# If there are no recipes in "this" makefile, you need to assign a target from `ubermakefile/makefile` to `.DEFAULT_GOAL`.
 # Example:
 # .DEFAULT_GOAL = devall
 do_something:

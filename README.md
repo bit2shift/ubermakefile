@@ -1,21 +1,21 @@
-# über.mk
-Übermakefile for those who are not very fond of CMake. For C++ code bases.  
+# ubermakefile
+For those who are not very fond of CMake. For C++ code bases.  
 <sup><sub>_It can be used with C if you're willing to do some little editing._</sub></sup>
 
-Relies on common essential tools—`find`, `git`, `make` (obviously) and `pkg-config`—in addition to `jq`—for querying `über.json`.
+Relies on common essential tools—`find`, `git`, `make` (obviously) and `pkg-config`—in addition to `jq`—for querying `ubermakefile.json`.
 
 ## 5 steps quick start
 - Plop your code into a `src` folder
-- Specify the build (compile and link) flags alongside with _normal_ dependencies in `über.json`
-- Define the build targets with their even-so-more-specific flags and objects in `über.json`
-- Either symlink `über.mk/makefile` into your project or have a _shim_ `makefile` that includes or redirects all unmatched targets into it
+- Specify the build (compile and link) flags alongside with _normal_ dependencies in `ubermakefile.json`
+- Define the build targets with their even-so-more-specific flags and objects in `ubermakefile.json`
+- Either symlink `ubermakefile/makefile` into your project or have a _shim_ `makefile` that includes or redirects all unmatched targets into it
 - `make`/`make all` or `make devall`, for building in release or debug mode, respectively
 
 ### Optional step
-- Add any _source-built_ dependencies as `git` submodules and declare them with build instructions in `über.json`
+- Add any _source-built_ dependencies as `git` submodules and declare them with build instructions in `ubermakefile.json`
 
 ---
-## Layout of `über.json`
+## Layout of `ubermakefile.json`
 - [`flags`](#flags)
   - [`common`](#common)
   - [`debug`](#debug)
