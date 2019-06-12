@@ -1,0 +1,40 @@
+{
+	"flags": {
+		"common": {
+			"CXXFLAGS": "-std=c++17 -pedantic -Wall -Wconversion -Werror -Wextra -fPIC -fvisibility=hidden"
+		},
+		"debug": {
+			"CXXFLAGS": "-O0 -g3"
+		},
+		"release": {
+			"CXXFLAGS": "-O3"
+		}
+	},
+	"targets": {
+		"foo/bar.so": {
+			"flags": {
+				"LDFLAGS": "-shared"
+			},
+			"objects": "foo/%"
+		},
+		"foo/bar.a": {
+			"static": true,
+			"objects": [
+				"$(eval ARFLAGS:=src)",
+				"foo/%"
+			]
+		}
+	},
+	"dependencies": {
+		"blah": {
+			"static": true,
+			"build": "echo '{dummy dependency blah}'"
+		},
+		"derp": {
+			"build": [
+				"echo '{dummy dependency derp}'",
+				"echo '{derp...}'"
+			]
+		}
+	}
+}
