@@ -1,0 +1,6 @@
+Name: blah
+Description: dummy package
+Version: 0.0
+Libs: -L.
+Libs.private: -lm
+Cflags: -I.
