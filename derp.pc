@@ -1,0 +1,5 @@
+Name: derp
+Description: dummy package
+Version: 0.0
+Libs: -L.
+Cflags: -I.
