@@ -1,10 +1,10 @@
 [submodule "blah"]
 	path = dep/blah
-	url = https://github.com/bit2shift/ubermakefile
+	url = ../ubermakefile
 	branch = test_blah
 
 [submodule "derp"]
 	path = dep/derp
-	url = https://github.com/bit2shift/ubermakefile
+	url = ../ubermakefile
 	branch = test_derp
 
