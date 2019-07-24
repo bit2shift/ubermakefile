@@ -22,3 +22,10 @@ def build_pkgconfig($args):
     end,
     .key,
     ";";
+
+def build_targets:
+  .targets
+  | to_entries
+  | .[]
+  | "bin/\(.key)"
+  ;
