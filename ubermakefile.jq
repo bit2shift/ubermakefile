@@ -1,5 +1,5 @@
 def depbuild_commands:
-  .dependencies."\(env.name)".build
+  .dependencies.[env.name].build
   | arrays, strings
   | @sh;
 
