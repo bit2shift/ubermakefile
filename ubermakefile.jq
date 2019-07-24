@@ -1,13 +1,15 @@
 def depbuild_commands:
   .dependencies.[env.name].build
   | arrays, strings
-  | @sh;
+  | @sh
+  ;
 
 def build_flags(section; $prefix):
   section // {}
   | to_entries
   | .[]
-  | "$(eval \($prefix) \(.key)+=\(.value))";
+  | "$(eval \($prefix) \(.key)+=\(.value))"
+  ;
 
 def build_pkgconfig($args):
   .dependencies // {}
@@ -21,7 +23,8 @@ def build_pkgconfig($args):
       empty
     end,
     .key,
-    ";";
+    ";"
+  ;
 
 def build_targets:
   .targets
