@@ -6,4 +6,5 @@ $(info )
 include $(SELF)/*.mk
 include $(SELF)/*.mk
 
+.PHONY: all
 all: ;

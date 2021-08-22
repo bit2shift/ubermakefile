@@ -23,6 +23,7 @@ DERP = $(info stderr: derp)$(shell echo derp kek)
 BLAH = $(info stderr: blah)$(shell echo blah kek)
 $(call lazy-var,FOO BAR DERP BLAH)
 
+.PHONY: all
 all:
 	$(call canned_debug,BAR)
 	$(call canned_debug,BLAH)

@@ -5,6 +5,7 @@ endef
 mk-path = $(info mk-path evaluated)$(shell find $(CURDIR) -name '*.mk' -printf '%f ')
 $(call lazy-var-single,mk-path)
 
+.PHONY: all
 all:
 	$(info lazy-var-single: $(value lazy-var-single))
 	$(info )

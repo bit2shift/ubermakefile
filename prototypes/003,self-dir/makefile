@@ -6,5 +6,6 @@ import "ubermakefile" as $$uber;
 uber::blah($$uber)
 endef
 
+.PHONY: all
 all:
 	$(info $(shell jq -nr -L '$(SELF)' '$(filter)'))
