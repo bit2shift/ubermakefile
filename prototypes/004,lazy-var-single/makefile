@@ -2,7 +2,7 @@ define lazy-var-single
 $(eval $1 = $$(eval $1 := $(value $1))$$($1))
 endef
 
-mk-path = $(info   mk-path evaluated)$(shell find $(CURDIR) -name '*.mk' -printf '%f ')
+mk-path = $(info mk-path evaluated)$(shell find $(CURDIR) -name '*.mk' -printf '%f ')
 $(call lazy-var-single,mk-path)
 
 all:
