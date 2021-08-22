@@ -1,5 +1,5 @@
 #!/usr/bin/env -S name=dummy jq --run-tests
-
+# Run in the same directory as "ubermakefile.jq".
 # Each test is composed of 3+ contiguous lines.
 # Comments and empty lines are ignored.
 # 1) test program
