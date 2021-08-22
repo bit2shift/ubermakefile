@@ -26,3 +26,8 @@ import "ubermakefile" as u; u::build_pkgconfig("--libs")
 "--static"
 "bb"
 ";"
+
+import "ubermakefile" as u; u::build_targets
+{"targets":{"bar":null,"libfoo.so":null}}
+"bin/bar"
+"bin/libfoo.so"
